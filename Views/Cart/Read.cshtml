@@ -1,0 +1,241 @@
+﻿
+@using webbanhang.Models
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coron-cart</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Frontend/frontend/assets\img\favicon.png">
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\bootstrap.min.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\plugin.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\bundle.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\style.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\responsive.css">
+    <script src="~/Frontend/frontend/assets\js\vendor\modernizr-2.8.3.min.js"></script>
+</head>
+
+
+
+<body>
+    <!-- Add your site or application content here -->
+    <!--pos page start-->
+    <div class="pos_page">
+        <div class="container">
+            <!--pos page inner-->
+            <div class="pos_page_inner">
+                <!--header area -->
+                @Html.Partial("~/Views/Shared/Header.cshtml")
+                <!--header end -->
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb_content">
+                                <ul>
+                                    <li><a href="/Home/Index">Trang chủ</a></li>
+                                    <li><i class="fa fa-angle-right"></i></li>
+                                    <li>Giỏ hàng</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                @if(Model.Count > 0){
+                <!--shopping cart area start -->
+                <div class="shopping_cart_area">
+                        <form method="post" id="frm" action="/Cart/Update">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table_desc">
+                                    <div class="cart_page table-responsive">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="product_remove">Xóa</th>
+                                                    <th class="product_thumb">Hình ảnh</th>
+                                                    <th class="product_name">Sản phẩm</th>
+                                                    <th class="product-price">Giá</th>
+                                                    <th class="product-price">Giảm giá</th>
+                                                    <th class="product_quantity">Số lượng</th>
+                                                    <th class="product_total">Tổng tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(var item in Model){
+                                                <tr>
+                                                    <td class="product_remove"><a href="/Cart/Delete/@item.ProductRecord.Id"><i class="fa fa-trash-o"></i></a></td>
+                                                    <td class="product_thumb"><a href="#"><img src="~/Upload/Products/@item.ProductRecord.Photo" alt=""></a></td>
+                                                     <td class="product_name"><a href="#">@item.ProductRecord.Name</a></td>
+                                                     <td class="product-price">@string.Format("{0:#,#.}", item.ProductRecord.Price)đ</td>
+                                                     <td class="product-price">@item.ProductRecord.Discount<span>%</span></td>
+
+                                                    <td class="product_quantity"><input min="0" max="100" value="@item.Quantity" type="number" name="product_@item.ProductRecord.Id"></td>
+                                                            <td class="product_total">@string.Format("{0:#,#.}", (item.ProductRecord.Price * (1 - item.ProductRecord.Discount / 100) * item.Quantity))đ</td>
+
+                                                </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="cart_submit">
+                                        <a href="/Home/Index">Mua thêm</a>
+                                    </div>
+                                    <div class="cart_submit">
+                                        <button type="submit">Cập nhật giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--coupon code area start-->
+                        <div class="coupon_area">
+                                <div class="row" style="justify-content:center ">
+                                <div class="col-lg-8 col-md-6">
+                                    <div class="coupon_code">
+                                            <h3>TỔNG TIỀN GIỎ HÀNGs</h3>
+                                        <div class="coupon_inner">
+                                            <div class="cart_subtotal">
+                                                <p>Tổng phải trả</p>
+                                                    <p class="cart_amount">@string.Format("{0:#,#.}", Cart.CartTotal(Context.Session))đ</p>
+                                            </div>
+                                           @*  <div class="cart_subtotal ">
+                                                <p>Shipping</p>
+                                                <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                            </div> *@
+                                            @* <a href="#">Calculate shipping</a>
+
+                                            <div class="cart_subtotal">
+                                                <p>Total</p>
+                                                <p class="cart_amount">£215.00</p>
+                                            </div> *@
+                                            <div class="checkout_btn">
+                                                <a href="/Cart/Checkout">Tiến hành thanh toán</a>
+                                                <p style="font-size : 10px">Đăng nhập để thanh toán</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--coupon code area end-->
+                    </form>
+                </div>
+                    <!--shopping cart area end -->
+                }
+                else{
+                    <h1>Không còn mặt hàng nào trong giỏ hàng</h1>
+                    
+                    }
+
+            </div>
+            <!--pos page inner end-->
+        </div>
+    </div>
+    <!--pos page end-->
+    <!--footer area start-->
+    <div class="footer_area">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Về chúng tôi</h3>
+                            <p>
+                                Cửa hàng quần áo chuyên thời trang chất lượng, đa phong cách, cập nhật xu hướng mới nhất. Hãy ghé thăm để trải nghiệm!
+                            </p>
+                            <div class="footer_widget_contect">
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>  Tam sơn - Từ Sơn-  BẮc Ninh- Việt Nam</p>
+
+                                <p><i class="fa fa-mobile" aria-hidden="true"></i> (84) 961 921 158</p>
+                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> anhchinhh2@gmail.com </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Tài khoản của tôi</h3>
+                            <ul>
+                                <li><a href="#">Tài khoản của tôi</a></li>
+                                <li><a href="#">Đơn đặt hàng của tôi</a></li>
+                                <li><a href="#">Phiếu tín dụng của tôi</a></li>
+                                <li><a href="#">Địa chỉ của tôi</a></li>
+                                <li><a href="#">Đăng nhập</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Thông tin</h3>
+                            <ul>
+                                <li><a href="#">Đặc biệt</a></li>
+                                <li><a href="#">Các của hàng của chúng tôi</a></li>
+                                <li><a href="#">Tín dụng của tôi</a></li>
+                                <li><a href="#">Điều khoản và điều kiện</a></li>
+                                <li><a href="#">Về chúng tôi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Bổ sung</h3>
+                            <ul>
+                                <li><a href="#"> Thương hiệu</a></li>
+                                <li><a href="#"> Phiếu quà tặng </a></li>
+                                <li><a href="#"> Các chi nhánh </a></li>
+                                <li><a href="#"> Đặc biệt </a></li>
+                                <li><a href="#"> Chính sách bảo mật </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright_area">
+                            <ul>
+                                <li><a href="#"> Về chúng tôi </a></li>
+                                <li><a href="#">  DỊCH VỤ KHÁCH HÀNG  </a></li>
+                                <li><a href="#">  CHÍNH SÁCH RIÊNG TƯ  </a></li>
+                            </ul>
+                            <p>Bản quyền &copy; 2024 <a href="#">Ưu Tiên</a>. Mọi quyền được bảo lưu. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer_social text-right">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+
+                                <li><a href="#"><i class="fa fa-wifi" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer area end-->
+    <!-- all js here -->
+    <script src="~/Frontend/frontend/assets\js\vendor\jquery-1.12.0.min.js"></script>
+    <script src="~/Frontend/frontend/assets\js\popper.js"></script>
+    <script src="~/Frontend/frontend/assets\js\bootstrap.min.js"></script>
+    <script src="~/Frontend/frontend/assets\js\ajax-mail.js"></script>
+    <script src="~/Frontend/frontend/assets\js\plugins.js"></script>
+    <script src="~/Frontend/frontend/assets\js\main.js"></script>
+</body>
+
+</html>

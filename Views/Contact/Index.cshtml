@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coron-contact</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Frontend/frontend/assets\img\favicon.png">
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\bootstrap.min.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\plugin.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\bundle.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\style.css">
+    <link rel="stylesheet" href="~/Frontend/frontend/assets\css\responsive.css">
+    <script src="~/Frontend/frontend/assets\js\vendor\modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!-- Add your site or application content here -->
+    <!--pos page start-->
+    <div class="pos_page">
+        <div class="container">
+            <!--pos page inner-->
+            <div class="pos_page_inner">
+                <!--header area -->
+              @Html.Partial("~/Views/Shared/Header.cshtml")
+                <!--header end -->
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb_content">
+                                <ul>
+                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li><i class="fa fa-angle-right"></i></li>
+                                    <li>Liên hệ</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                <!--contact area start-->
+                <div class="contact_area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="contact_message">
+                                <h3>Điền thông tin chi tiết của bạn</h3>
+                                <form id="contact-form" method="POST" action="~/Frontend/frontend/assets/mail.php">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <input name="name" placeholder="Họ Và Tên *" type="text">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input name="email" placeholder="Email *" type="email">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input name="subject" placeholder="Chủ đề *" type="text">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input name="phone" placeholder="SĐT *" type="text">
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="contact_textarea">
+                                                <textarea placeholder="Tin nhắn *" name="message" class="form-control2"></textarea>
+                                            </div>
+                                            <button type="submit"> Gửi liên hệ </button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="form-messege">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="contact_message contact_info">
+                                <h3>Liên hệ chúng tôi</h3>
+                                <p>Bạn có thể liên hệ với chúng tôi qua email: email@example.com hoặc gọi điện thoại: 0987654321 để được hỗ trợ nhanh chóng. Đội ngũ của chúng tôi luôn sẵn sàng giải đáp mọi thắc mắc của bạn. Cảm ơn bạn đã tin tưởng và mua sắm tại shop!".</p>
+                                <ul>
+                                    <li><i class="fa fa-fax"></i>  Địa chỉ : Tam Sơn - Từ Sơn - Bắc Ninh - Việt Nam</li>
+                                    <li><i class="fa fa-phone"></i> <a href="#">(84) 961 921 158</a></li>
+                                    <li><i class="fa fa-envelope-o"></i> anhchinhh2@gmail.com</li>
+                                </ul>
+                                <h3><strong>Thời gian làm việc</strong></h3>
+                                <p><strong>Các ngày trong tuần</strong>:  08AM – 22PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--contact area end-->
+                <!--contact map start-->
+                <div class="contact_map">
+                    <div class="row">
+                        <div class="col-12">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8346096347577!2d105.77081187379756!3d21.039302687419177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b5534fb3bf%3A0x70d71b071349fa94!2sDevPro%20Vietnam!5e0!3m2!1sen!2s!4v1713878572963!5m2!1sen!2s" height="450" style="border:0; width:100%; margin-top:50px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <!--contact map end-->
+
+
+            </div>
+            <!--pos page inner end-->
+        </div>
+    </div>
+    <!--pos page end-->
+    <!--footer area start-->
+    <div class="footer_area">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Về chúng tôi</h3>
+                            <p>
+                                Cửa hàng quần áo chuyên thời trang chất lượng, đa phong cách, cập nhật xu hướng mới nhất. Hãy ghé thăm để trải nghiệm!
+                            </p>
+                            <div class="footer_widget_contect">
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>  Tam sơn - Từ Sơn-  BẮc Ninh- Việt Nam</p>
+
+                                <p><i class="fa fa-mobile" aria-hidden="true"></i> (84) 961 921 158</p>
+                                <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> anhchinhh2@gmail.com </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Tài khoản của tôi</h3>
+                            <ul>
+                                <li><a href="#">Tài khoản của tôi</a></li>
+                                <li><a href="#">Đơn đặt hàng của tôi</a></li>
+                                <li><a href="#">Phiếu tín dụng của tôi</a></li>
+                                <li><a href="#">Địa chỉ của tôi</a></li>
+                                <li><a href="#">Đăng nhập</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Thông tin</h3>
+                            <ul>
+                                <li><a href="#">Đặc biệt</a></li>
+                                <li><a href="#">Các của hàng của chúng tôi</a></li>
+                                <li><a href="#">Tín dụng của tôi</a></li>
+                                <li><a href="#">Điều khoản và điều kiện</a></li>
+                                <li><a href="#">Về chúng tôi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer_widget">
+                            <h3>Bổ sung</h3>
+                            <ul>
+                                <li><a href="#"> Thương hiệu</a></li>
+                                <li><a href="#"> Phiếu quà tặng </a></li>
+                                <li><a href="#"> Các chi nhánh </a></li>
+                                <li><a href="#"> Đặc biệt </a></li>
+                                <li><a href="#"> Chính sách bảo mật </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright_area">
+                            <ul>
+                                <li><a href="#"> Về chúng tôi </a></li>
+                                <li><a href="#">  DỊCH VỤ KHÁCH HÀNG  </a></li>
+                                <li><a href="#">  CHÍNH SÁCH RIÊNG TƯ  </a></li>
+                            </ul>
+                            <p>Bản quyền &copy; 2024 <a href="#">Ưu Tiên</a>. Mọi quyền được bảo lưu. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer_social text-right">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+
+                                <li><a href="#"><i class="fa fa-wifi" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer area end-->
+    <!-- all js here -->
+    <script src="~/Frontend/frontend/assets\js\vendor\jquery-1.12.0.min.js"></script>
+    <script src="~/Frontend/frontend/assets\js\popper.js"></script>
+    <script src="~/Frontend/frontend/assets\js\bootstrap.min.js"></script>
+    <script src="~/Frontend/frontend/assets\js\ajax-mail.js"></script>
+    <script src="~/Frontend/frontend/assets\js\plugins.js"></script>
+    <script src="~/Frontend/frontend/assets\js\main.js"></script>
+</body>
+</html>
